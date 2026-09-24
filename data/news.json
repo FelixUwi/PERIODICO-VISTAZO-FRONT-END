@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "categoria": "educacion",
+    "catLabel": "Educación",
+    "imagen": "https://picsum.photos/seed/vistazo-edu1/700/500",
+    "titulo": "Universidades locales abren laboratorios abiertos a la comunidad",
+    "resumen": "Programa piloto de fines de semana con mentoría estudiantil.",
+    "contenido": [
+      "Un programa piloto impulsado por tres universidades de la región permitirá a estudiantes de colegios públicos usar laboratorios de ingeniería y ciencias durante los fines de semana, acompañados por estudiantes de últimos semestres como mentores.",
+      "La iniciativa busca acercar herramientas tecnológicas a jóvenes que normalmente no tienen acceso a este tipo de infraestructura, y hace parte de un plan más amplio de vinculación con la comunidad.",
+      "Las inscripciones estarán abiertas durante todo el mes y no tienen ningún costo para los participantes."
+    ],
+    "ubicacion": "Neiva",
+    "fecha": "Hace 2 días",
+    "modalidad": "Presencial",
+    "costo": "Gratuito",
+    "cupos": "40 estudiantes",
+    "relacionadas": [5, 6],
+    "destacadaHome": true,
+    "tamHome": "feature"
+  },
+  {
+    "id": 2,
+    "categoria": "tecnologia",
+    "catLabel": "Tecnología",
+    "imagen": "https://picsum.photos/seed/vistazo-tech1/700/500",
+    "titulo": "App de movilidad compartida llega a zonas rurales",
+    "resumen": "Reduce tiempos de espera hasta en un 40%.",
+    "contenido": [
+      "Una startup regional lanzó una aplicación de movilidad compartida pensada para conectar veredas y corregimientos con las cabeceras municipales, donde el transporte público es escaso.",
+      "Los primeros resultados muestran una reducción de hasta el 40% en los tiempos de espera de los usuarios frente a las alternativas tradicionales.",
+      "El equipo detrás del proyecto planea expandir el servicio a tres municipios más antes de fin de año."
+    ],
+    "ubicacion": "Huila",
+    "fecha": "Hace 3 días",
+    "modalidad": "Virtual",
+    "costo": "Uso gratuito de la app",
+    "cupos": "Sin límite",
+    "relacionadas": [6, 4],
+    "destacadaHome": true,
+    "tamHome": "normal"
+  },
+  {
+    "id": 3,
+    "categoria": "turismo",
+    "catLabel": "Turismo",
+    "imagen": "https://picsum.photos/seed/vistazo-tur1/700/500",
+    "titulo": "Tres rutas ecológicas nuevas certificadas este semestre",
+    "resumen": "Ideal para caminatas guiadas de medio día.",
+    "contenido": [
+      "La autoridad ambiental regional certificó tres nuevas rutas ecológicas pensadas para caminatas guiadas de medio día, con miradores y senderos interpretativos.",
+      "Cada ruta cuenta con guías locales capacitados y cupos limitados para minimizar el impacto ambiental.",
+      "Se recomienda reservar con al menos una semana de anticipación durante temporada alta."
+    ],
+    "ubicacion": "Huila",
+    "fecha": "Hace 4 días",
+    "modalidad": "Presencial",
+    "costo": "$25.000 por persona",
+    "cupos": "15 personas por grupo",
+    "relacionadas": [4, 1],
+    "destacadaHome": true,
+    "tamHome": "normal"
+  },
+  {
+    "id": 4,
+    "categoria": "comercio",
+    "catLabel": "Comercio",
+    "imagen": "https://picsum.photos/seed/vistazo-com1/700/500",
+    "titulo": "Mercado artesanal digitaliza sus ventas",
+    "resumen": "Catálogo en línea creado por estudiantes universitarios.",
+    "contenido": [
+      "Un mercado artesanal tradicional de la región ahora cuenta con un catálogo en línea desarrollado por estudiantes de ingeniería como parte de un proyecto de responsabilidad social.",
+      "Los vendedores reportan un incremento sostenido en pedidos gracias a la mayor visibilidad de sus productos fuera de la ciudad.",
+      "El proyecto continuará ampliándose para incluir pagos en línea en la siguiente fase."
+    ],
+    "ubicacion": "Neiva",
+    "fecha": "Hace 5 días",
+    "modalidad": "Virtual",
+    "costo": "Gratuito para los vendedores",
+    "cupos": "No aplica",
+    "relacionadas": [2, 6],
+    "destacadaHome": true,
+    "tamHome": "normal-wide"
+  },
+  {
+    "id": 5,
+    "categoria": "educacion",
+    "catLabel": "Educación",
+    "imagen": "https://picsum.photos/seed/vistazo-edu2/700/500",
+    "titulo": "Becas de intercambio abren convocatoria",
+    "resumen": "20 cupos disponibles para el próximo semestre.",
+    "contenido": [
+      "Una alianza entre universidades nacionales e internacionales abrió convocatoria para 20 becas de intercambio académico para el próximo semestre.",
+      "Las becas cubren matrícula y parte del hospedaje; el transporte corre por cuenta del estudiante seleccionado.",
+      "El proceso de selección incluye una entrevista y la sustentación de una propuesta académica."
+    ],
+    "ubicacion": "Nacional",
+    "fecha": "Hace 1 semana",
+    "modalidad": "Presencial",
+    "costo": "Beca parcial",
+    "cupos": "20 estudiantes",
+    "relacionadas": [1, 6],
+    "destacadaHome": false,
+    "tamHome": null
+  },
+  {
+    "id": 6,
+    "categoria": "tecnologia",
+    "catLabel": "Tecnología",
+    "imagen": "https://picsum.photos/seed/vistazo-tech2/700/500",
+    "titulo": "Taller gratuito de desarrollo web para principiantes",
+    "resumen": "Inscripciones abiertas hasta fin de mes.",
+    "contenido": [
+      "Un colectivo de desarrolladores locales organiza un taller gratuito de introducción al desarrollo web, dirigido a personas sin experiencia previa en programación.",
+      "El taller cubre fundamentos de HTML, CSS y JavaScript en cuatro sesiones prácticas los fines de semana.",
+      "Los cupos son limitados y se asignan por orden de inscripción."
+    ],
+    "ubicacion": "Neiva",
+    "fecha": "Hace 6 días",
+    "modalidad": "Presencial",
+    "costo": "Gratuito",
+    "cupos": "30 personas",
+    "relacionadas": [2, 5],
+    "destacadaHome": false,
+    "tamHome": null
+  }
+]
