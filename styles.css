@@ -149,6 +149,24 @@ nav.mainnav a:hover{border-bottom-color:var(--line);}
   align-items:flex-start;
   padding:12px;
 }
+.fav-star{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(20,24,27,.55);
+  color:var(--white);
+  font-size:16px;
+  cursor:pointer;
+  transition:transform .15s ease, background .15s ease, color .15s ease;
+}
+.fav-star:hover{transform:scale(1.1);}
+.fav-star.active{background:var(--tur);color:var(--white);}
 .card-feature .card-img{aspect-ratio:16/9;}
 .cat-pill{
   font-size:11px;
@@ -168,8 +186,6 @@ nav.mainnav a:hover{border-bottom-color:var(--line);}
 .card-body p{font-size:13.5px;color:var(--ink-soft);margin:0;line-height:1.5;}
 .card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px;}
 .link-more{font-size:13px;font-weight:700;cursor:pointer;}
-.fav-icon{font-size:16px;opacity:.5;cursor:pointer;}
-.fav-icon.active{opacity:1;color:var(--com);}
 
 /* --- CTA band --- */
 .cta-band{

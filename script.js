@@ -3,7 +3,10 @@
 // ============================================================
 
 let noticias = [];       // se llena al cargar data/news.json
+let favoritos = [];       // ids de noticias marcadas como favoritas
 let filtroActivo = "todas";
+
+const FAVORITOS_STORAGE_KEY = "vistazoFavoritos";
 
 const CAT_CLASS = {
   educacion: "cat-edu",
@@ -22,12 +25,52 @@ async function cargarNoticias() {
     console.error(err);
     noticias = [];
   }
+  await cargarFavoritos();
   renderHome();
   renderListado();
+  renderFavoritos();
+}
+
+async function cargarFavoritos() {
+  const guardados = localStorage.getItem(FAVORITOS_STORAGE_KEY);
+  if (guardados) {
+    favoritos = JSON.parse(guardados);
+    return;
+  }
+  try {
+    const res = await fetch("data/favoritos.json");
+    favoritos = res.ok ? await res.json() : [];
+  } catch (err) {
+    favoritos = [];
+  }
+}
+
+function guardarFavoritos() {
+  localStorage.setItem(FAVORITOS_STORAGE_KEY, JSON.stringify(favoritos));
+}
+
+function esFavorita(id) {
+  return favoritos.includes(Number(id));
+}
+
+function alternarFavorito(id) {
+  id = Number(id);
+  favoritos = esFavorita(id)
+    ? favoritos.filter(favId => favId !== id)
+    : [...favoritos, id];
+  guardarFavoritos();
+  renderHome();
+  renderListado();
+  renderFavoritos();
 }
 
 function buscarNoticiaPorId(id) {
   return noticias.find(n => n.id === Number(id));
+}
+
+// ---------- Estrella de favoritos, compartida entre tarjetas ----------
+function estrellaFavorito(n) {
+  return `<span class="fav-star ${esFavorita(n.id) ? "active" : ""}" data-fav="${n.id}" title="Agregar a favoritos">★</span>`;
 }
 
 // ---------- HOME: destacadas dinámicas ----------
@@ -43,13 +86,15 @@ function tarjetaHome(n) {
                      : "";
   return `
     <div class="card ${claseTamano}">
-      <div class="card-img" style="background-image:url('${n.imagen}')"><span class="cat-pill ${CAT_CLASS[n.categoria]}">${n.catLabel}</span></div>
+      <div class="card-img" style="background-image:url('${n.imagen}')">
+        <span class="cat-pill ${CAT_CLASS[n.categoria]}">${n.catLabel}</span>
+        ${estrellaFavorito(n)}
+      </div>
       <div class="card-body">
         <h3>${n.titulo}</h3>
         <p>${n.resumen}</p>
         <div class="card-foot">
           <a class="link-more" data-detalle="${n.id}">Ver más →</a>
-          <span class="fav-icon">♡</span>
         </div>
       </div>
     </div>`;
@@ -74,13 +119,15 @@ function renderListado() {
 function tarjetaListado(n) {
   return `
     <div class="list-card">
-      <div class="card-img" style="background-image:url('${n.imagen}')"><span class="cat-pill ${CAT_CLASS[n.categoria]}">${n.catLabel}</span></div>
+      <div class="card-img" style="background-image:url('${n.imagen}')">
+        <span class="cat-pill ${CAT_CLASS[n.categoria]}">${n.catLabel}</span>
+        ${estrellaFavorito(n)}
+      </div>
       <div class="card-body">
         <h3>${n.titulo}</h3>
         <p>${n.resumen}</p>
         <div class="card-foot">
           <a class="link-more" data-detalle="${n.id}">Ver más →</a>
-          <span class="fav-icon">♡</span>
         </div>
       </div>
     </div>`;
@@ -97,6 +144,21 @@ function inicializarFiltros() {
   });
 }
 
+// ---------- FAVORITOS: cards de las noticias marcadas ----------
+function renderFavoritos() {
+  const contenedor = document.getElementById("favoritos-grid");
+  const contador = document.getElementById("favoritos-contador");
+  if (!contenedor || !contador) return;
+
+  const lista = noticias.filter(n => esFavorita(n.id));
+
+  contador.textContent = `${lista.length} historia${lista.length === 1 ? "" : "s"} guardada${lista.length === 1 ? "" : "s"}`;
+
+  contenedor.innerHTML = lista.length
+    ? lista.map(n => tarjetaListado(n)).join("")
+    : `<p class="empty-state">Aún no has marcado noticias como favoritas. Haz clic en la estrella de una tarjeta para guardarla aquí.</p>`;
+}
+
 // ---------- DETALLE: contenido dinámico según la noticia elegida ----------
 function renderDetalle(id) {
   const n = buscarNoticiaPorId(id);
@@ -110,17 +172,22 @@ function renderDetalle(id) {
     .map(rid => buscarNoticiaPorId(rid))
     .filter(Boolean);
 
+  const favorita = esFavorita(n.id);
+
   contenedor.innerHTML = `
     <div>
       <div class="breadcrumb"><a data-goto="listado">Explorar</a> / ${n.catLabel} / Detalle</div>
-      <div class="detalle-img" style="background-image:url('${n.imagen}')"><span class="cat-pill ${CAT_CLASS[n.categoria]}">${n.catLabel}</span></div>
+      <div class="detalle-img" style="background-image:url('${n.imagen}')">
+        <span class="cat-pill ${CAT_CLASS[n.categoria]}">${n.catLabel}</span>
+        ${estrellaFavorito(n)}
+      </div>
       <h1>${n.titulo}</h1>
       <div class="meta-row"><span>📍 ${n.ubicacion}</span><span>·</span><span>${n.fecha}</span></div>
       <div class="detalle-body">
         ${n.contenido.map(p => `<p>${p}</p>`).join("")}
       </div>
       <div class="detalle-actions">
-        <span class="btn btn-primary">♡ Agregar a favoritos</span>
+        <span class="btn btn-primary" data-fav="${n.id}">${favorita ? "★ En favoritos" : "☆ Agregar a favoritos"}</span>
         <span class="btn btn-ghost" data-goto="contacto">Contactar organizadores</span>
       </div>
     </div>
@@ -148,9 +215,17 @@ function goToDetalle(id) {
   goTo("detalle");
 }
 
-// Delegación de eventos: clicks en data-goto y data-detalle en cualquier parte del documento,
-// incluido el contenido que se genera dinámicamente.
+// Delegación de eventos: clicks en data-goto, data-detalle y data-fav en cualquier parte
+// del documento, incluido el contenido que se genera dinámicamente.
 document.addEventListener("click", (e) => {
+  const favToggle = e.target.closest("[data-fav]");
+  if (favToggle) {
+    alternarFavorito(favToggle.dataset.fav);
+    if (document.getElementById("detalle").classList.contains("active")) {
+      renderDetalle(favToggle.dataset.fav);
+    }
+    return;
+  }
   const irA = e.target.closest("[data-goto]");
   if (irA) {
     goTo(irA.dataset.goto);
