@@ -16,7 +16,10 @@
     "modalidad": "Presencial",
     "costo": "Gratuito",
     "cupos": "40 estudiantes",
-    "relacionadas": [5, 6],
+    "relacionadas": [
+      5,
+      6
+    ],
     "destacadaHome": true,
     "tamHome": "feature"
   },
@@ -37,7 +40,10 @@
     "modalidad": "Virtual",
     "costo": "Uso gratuito de la app",
     "cupos": "Sin límite",
-    "relacionadas": [6, 4],
+    "relacionadas": [
+      6,
+      4
+    ],
     "destacadaHome": true,
     "tamHome": "normal"
   },
@@ -58,7 +64,10 @@
     "modalidad": "Presencial",
     "costo": "$25.000 por persona",
     "cupos": "15 personas por grupo",
-    "relacionadas": [4, 1],
+    "relacionadas": [
+      4,
+      1
+    ],
     "destacadaHome": true,
     "tamHome": "normal"
   },
@@ -79,7 +88,10 @@
     "modalidad": "Virtual",
     "costo": "Gratuito para los vendedores",
     "cupos": "No aplica",
-    "relacionadas": [2, 6],
+    "relacionadas": [
+      2,
+      6
+    ],
     "destacadaHome": true,
     "tamHome": "normal-wide"
   },
@@ -100,7 +112,10 @@
     "modalidad": "Presencial",
     "costo": "Beca parcial",
     "cupos": "20 estudiantes",
-    "relacionadas": [1, 6],
+    "relacionadas": [
+      1,
+      6
+    ],
     "destacadaHome": false,
     "tamHome": null
   },
@@ -121,8 +136,35 @@
     "modalidad": "Presencial",
     "costo": "Gratuito",
     "cupos": "30 personas",
-    "relacionadas": [2, 5],
+    "relacionadas": [
+      2,
+      5
+    ],
     "destacadaHome": false,
     "tamHome": null
+  },
+  {
+    "id": 7,
+    "categoria": "turismo",
+    "catLabel": "Turismo",
+    "imagen": "https://picsum.photos/seed/vistazo-tur2/700/500",
+    "titulo": "Nuevo mirador nocturno se convierte en atractivo turístico",
+    "resumen": "Recorridos guiados los fines de semana con observación de estrellas.",
+    "contenido": [
+      "Un mirador ubicado a las afueras de la ciudad abrió recorridos nocturnos guiados, pensados para la observación de estrellas y el avistamiento de aves nocturnas propias de la región.",
+      "El proyecto es liderado por una asociación de guías locales que busca diversificar la oferta turística fuera del horario tradicional diurno.",
+      "Los recorridos incluyen transporte desde el punto de encuentro, un guía certificado y un refrigerio."
+    ],
+    "ubicacion": "Huila",
+    "fecha": "Hace 1 día",
+    "modalidad": "Presencial",
+    "costo": "$18.000 por persona",
+    "cupos": "20 personas por grupo",
+    "relacionadas": [
+      3,
+      4
+    ],
+    "destacadaHome": true,
+    "tamHome": "normal"
   }
 ]

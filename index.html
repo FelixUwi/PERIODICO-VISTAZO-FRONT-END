@@ -20,7 +20,7 @@
     <nav class="mainnav">
       <a class="current" data-goto="home">Inicio</a>
       <a data-goto="listado">Explorar</a>
-      <a>Favoritos</a>
+      <a data-goto="favoritos">Favoritos</a>
       <a data-goto="contacto">Contacto</a>
       <a>Nosotros</a>
     </nav>
@@ -94,7 +94,7 @@
     <nav class="mainnav">
       <a data-goto="home">Inicio</a>
       <a class="current" data-goto="listado">Explorar</a>
-      <a>Favoritos</a>
+      <a data-goto="favoritos">Favoritos</a>
       <a data-goto="contacto">Contacto</a>
       <a>Nosotros</a>
     </nav>
@@ -127,7 +127,7 @@
     <nav class="mainnav">
       <a data-goto="home">Inicio</a>
       <a data-goto="listado">Explorar</a>
-      <a>Favoritos</a>
+      <a data-goto="favoritos">Favoritos</a>
       <a data-goto="contacto">Contacto</a>
       <a>Nosotros</a>
     </nav>
@@ -136,6 +136,31 @@
   <div class="page-wrap">
     <!-- Se llena dinámicamente según la noticia seleccionada -->
     <div class="detalle-grid" id="detalle-contenido"></div>
+  </div>
+</section>
+
+<!-- ================= FAVORITOS ================= -->
+<section id="favoritos" class="screen">
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="logo" data-goto="home">V<em>i</em>stazo</div>
+      <div class="masthead-date">Edición digital<br>Educación · Tecnología · Turismo · Comercio</div>
+    </div>
+    <nav class="mainnav">
+      <a data-goto="home">Inicio</a>
+      <a data-goto="listado">Explorar</a>
+      <a class="current" data-goto="favoritos">Favoritos</a>
+      <a data-goto="contacto">Contacto</a>
+      <a>Nosotros</a>
+    </nav>
+  </header>
+
+  <div class="page-wrap">
+    <h1 class="page-title">Tus favoritos</h1>
+    <p class="page-sub" id="favoritos-contador">Cargando favoritos...</p>
+
+    <!-- Se llena dinámicamente con las noticias marcadas como favoritas -->
+    <div class="listado-grid" id="favoritos-grid"></div>
   </div>
 </section>
 
@@ -149,7 +174,7 @@
     <nav class="mainnav">
       <a data-goto="home">Inicio</a>
       <a data-goto="listado">Explorar</a>
-      <a>Favoritos</a>
+      <a data-goto="favoritos">Favoritos</a>
       <a class="current" data-goto="contacto">Contacto</a>
       <a>Nosotros</a>
     </nav>
