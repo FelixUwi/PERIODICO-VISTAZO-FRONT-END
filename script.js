@@ -240,5 +240,251 @@ document.addEventListener("click", (e) => {
 // ---------- Inicio ----------
 document.addEventListener("DOMContentLoaded", () => {
   inicializarFiltros();
+
+  inicializarFormulario();
+
   cargarNoticias();
 });
+
+// ============================================================
+// FORMULARIO DE CONTACTO — VALIDACIONES
+// ============================================================
+
+function mostrarError(campo, mensaje) {
+
+    const contenedor = campo.closest(".field");
+    const mensajeError = contenedor.querySelector(".error-msg");
+
+    contenedor.classList.add("error");
+    mensajeError.textContent = mensaje;
+
+}
+
+
+function limpiarError(campo) {
+
+    const contenedor = campo.closest(".field");
+    const mensajeError = contenedor.querySelector(".error-msg");
+
+    contenedor.classList.remove("error");
+    mensajeError.textContent = "";
+
+}
+
+
+function validarNombre(nombre) {
+
+    if (nombre.trim() === "") {
+        return "El nombre completo es obligatorio.";
+    }
+
+    if (nombre.trim().length < 3) {
+        return "El nombre debe tener al menos 3 caracteres.";
+    }
+
+    return "";
+}
+
+
+function validarCorreo(correo) {
+
+    if (correo.trim() === "") {
+        return "El correo electrónico es obligatorio.";
+    }
+
+    const expresionCorreo =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!expresionCorreo.test(correo.trim())) {
+        return "Ingresa un correo electrónico válido.";
+    }
+
+    return "";
+}
+
+
+function validarAsunto(asunto) {
+
+    // El asunto es opcional.
+    // Si el usuario lo escribe, debe tener al menos 3 caracteres.
+
+    if (
+        asunto.trim() !== "" &&
+        asunto.trim().length < 3
+    ) {
+        return "El asunto debe tener al menos 3 caracteres.";
+    }
+
+    return "";
+}
+
+
+function validarMensaje(mensaje) {
+
+    if (mensaje.trim() === "") {
+        return "El mensaje es obligatorio.";
+    }
+
+    if (mensaje.trim().length < 10) {
+        return "El mensaje debe tener al menos 10 caracteres.";
+    }
+
+    return "";
+}
+
+
+// Inicializar formulario
+function inicializarFormulario() {
+
+    const formulario = document.getElementById("form-contacto");
+
+    if (!formulario) return;
+
+    const nombre = document.getElementById("nombre");
+    const correo = document.getElementById("correo");
+    const asunto = document.getElementById("asunto");
+    const mensaje = document.getElementById("mensaje");
+
+    const confirmacion = document.getElementById("confirmacion");
+
+
+    // --------------------------------------------------------
+    // Envío del formulario
+    // --------------------------------------------------------
+
+    formulario.addEventListener("submit", (e) => {
+
+        // Evita que la página se recargue
+        e.preventDefault();
+
+        // Ocultar confirmación anterior
+        confirmacion.style.display = "none";
+
+
+        // Obtener valores
+        const valorNombre = nombre.value;
+        const valorCorreo = correo.value;
+        const valorAsunto = asunto.value;
+        const valorMensaje = mensaje.value;
+
+
+        // Validaciones
+        const errorNombre = validarNombre(valorNombre);
+        const errorCorreo = validarCorreo(valorCorreo);
+        const errorAsunto = validarAsunto(valorAsunto);
+        const errorMensaje = validarMensaje(valorMensaje);
+
+
+        // Limpiar errores anteriores
+        limpiarError(nombre);
+        limpiarError(correo);
+        limpiarError(asunto);
+        limpiarError(mensaje);
+
+
+        let formularioValido = true;
+
+
+        // Validar nombre
+        if (errorNombre !== "") {
+
+            mostrarError(nombre, errorNombre);
+
+            formularioValido = false;
+        }
+
+
+        // Validar correo
+        if (errorCorreo !== "") {
+
+            mostrarError(correo, errorCorreo);
+
+            formularioValido = false;
+        }
+
+
+        // Validar asunto
+        if (errorAsunto !== "") {
+
+            mostrarError(asunto, errorAsunto);
+
+            formularioValido = false;
+        }
+
+
+        // Validar mensaje
+        if (errorMensaje !== "") {
+
+            mostrarError(mensaje, errorMensaje);
+
+            formularioValido = false;
+        }
+
+
+        // Si existe algún error, no continúa
+        if (!formularioValido) {
+            return;
+        }
+
+
+        // ----------------------------------------------------
+        // Formulario correcto
+        // ----------------------------------------------------
+
+        confirmacion.style.display = "flex";
+
+
+        // Limpiar formulario
+        formulario.reset();
+
+    });
+
+
+    // --------------------------------------------------------
+    // Validación mientras el usuario escribe
+    // --------------------------------------------------------
+
+    nombre.addEventListener("input", () => {
+
+        const error = validarNombre(nombre.value);
+
+        if (error === "") {
+            limpiarError(nombre);
+        }
+
+    });
+
+
+    correo.addEventListener("input", () => {
+
+        const error = validarCorreo(correo.value);
+
+        if (error === "") {
+            limpiarError(correo);
+        }
+
+    });
+
+
+    asunto.addEventListener("input", () => {
+
+        const error = validarAsunto(asunto.value);
+
+        if (error === "") {
+            limpiarError(asunto);
+        }
+
+    });
+
+
+    mensaje.addEventListener("input", () => {
+
+        const error = validarMensaje(mensaje.value);
+
+        if (error === "") {
+            limpiarError(mensaje);
+        }
+
+    });
+
+}
