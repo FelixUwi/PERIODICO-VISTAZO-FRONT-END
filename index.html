@@ -1,224 +1,1034 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vistazo — Plataforma web de noticias</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vistazo — Plataforma web de noticias</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
 </head>
+
+
 <body>
 
+
 <!-- ================= HOME ================= -->
+
 <section id="home" class="screen active">
-  <header class="masthead">
-    <div class="masthead-top">
-      <div class="logo" data-goto="home">V<em>i</em>stazo</div>
-      <div class="masthead-date">Edición digital<br>Educación · Tecnología · Turismo · Comercio</div>
-    </div>
-    <nav class="mainnav">
-      <a class="current" data-goto="home">Inicio</a>
-      <a data-goto="listado">Explorar</a>
-      <a data-goto="favoritos">Favoritos</a>
-      <a data-goto="contacto">Contacto</a>
-      <a>Nosotros</a>
-    </nav>
-  </header>
 
-  <div class="hero">
-    <div>
-      <h1>Noticias y experiencias que vale la pena mirar de cerca.</h1>
-      <p>Explora historias de educación, tecnología, turismo y comercio contadas por quienes las viven — guarda las que te interesan y vuelve a ellas cuando quieras.</p>
-      <div class="hero-actions">
-        <span class="btn btn-primary" data-goto="listado">Explorar noticias</span>
-        <span class="btn btn-ghost" data-goto="contacto">Contactar</span>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <span class="tag">Destacado · Tecnología</span>
-    </div>
-  </div>
+    <header class="masthead">
 
-  <div class="section-head">
-    <h2>Destacadas de la semana</h2>
-    <a data-goto="listado">Ver todas →</a>
-  </div>
+        <div class="masthead-top">
 
-  <!-- Se llena dinámicamente desde data/news.json -->
-  <div class="cards-grid" id="home-cards-grid"></div>
+            <div class="logo" data-goto="home">
+                V<em>i</em>stazo
+            </div>
 
-  <div class="cta-band">
-    <div class="cta-inner">
-      <div>
-        <h2>¿Tienes una historia que contar?</h2>
-        <p>Cuéntanos tu experiencia y ayúdanos a construir esta edición.</p>
-      </div>
-      <span class="btn btn-on-dark" data-goto="contacto">Escríbenos</span>
+            <div class="masthead-date">
+                Edición digital<br>
+                Educación · Tecnología · Turismo · Comercio
+            </div>
+
+        </div>
+
+
+        <nav class="mainnav">
+
+            <a class="current" data-goto="home">Inicio</a>
+
+            <a data-goto="listado">Explorar</a>
+
+            <a data-goto="favoritos">Favoritos</a>
+
+            <a data-goto="contacto">Contacto</a>
+
+            <a data-goto="nosotros">Nosotros</a>
+
+        </nav>
+
+    </header>
+
+
+    <div class="hero">
+
+        <div>
+
+            <h1>
+                Noticias y experiencias que vale la pena mirar de cerca.
+            </h1>
+
+            <p>
+                Explora historias de educación, tecnología, turismo y comercio
+                contadas por quienes las viven — guarda las que te interesan
+                y vuelve a ellas cuando quieras.
+            </p>
+
+            <div class="hero-actions">
+
+                <span
+                    class="btn btn-primary"
+                    data-goto="listado"
+                >
+                    Explorar noticias
+                </span>
+
+                <span
+                    class="btn btn-ghost"
+                    data-goto="contacto"
+                >
+                    Contactar
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <span class="tag">
+                Destacado · Tecnología
+            </span>
+
+        </div>
+
     </div>
-  </div>
 
-  <footer>
-    <div class="footer-inner">
-      <div>
-        <div class="logo" style="font-size:22px;">Vistazo</div>
-        <p style="margin-top:8px;">Un espacio para explorar y compartir noticias y experiencias reales.</p>
-      </div>
-      <div>
-        <h4>Navegación</h4>
-        <ul><li>Inicio</li><li>Explorar</li><li>Favoritos</li></ul>
-      </div>
-      <div>
-        <h4>Categorías</h4>
-        <ul><li>Educación</li><li>Tecnología</li><li>Turismo</li><li>Comercio</li></ul>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <ul><li>contacto@vistazo.app</li><li>Neiva, Colombia</li></ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Vistazo</span>
-      <span>Proyecto académico — materia de Front End</span>
-    </div>
-  </footer>
-</section>
 
-<!-- ================= LISTADO ================= -->
-<section id="listado" class="screen">
-  <header class="masthead">
-    <div class="masthead-top">
-      <div class="logo" data-goto="home">V<em>i</em>stazo</div>
-      <div class="masthead-date">Edición digital<br>Educación · Tecnología · Turismo · Comercio</div>
-    </div>
-    <nav class="mainnav">
-      <a data-goto="home">Inicio</a>
-      <a class="current" data-goto="listado">Explorar</a>
-      <a data-goto="favoritos">Favoritos</a>
-      <a data-goto="contacto">Contacto</a>
-      <a>Nosotros</a>
-    </nav>
-  </header>
+    <div class="section-head">
 
-  <div class="page-wrap">
-    <h1 class="page-title">Explorar noticias</h1>
-    <p class="page-sub" id="listado-contador">Cargando noticias...</p>
+        <h2>
+            Destacadas de la semana
+        </h2>
 
-    <div class="filters" id="listado-filtros">
-      <span class="filter-chip active" data-cat="todas">Todas</span>
-      <span class="filter-chip" data-cat="educacion">Educación</span>
-      <span class="filter-chip" data-cat="tecnologia">Tecnología</span>
-      <span class="filter-chip" data-cat="turismo">Turismo</span>
-      <span class="filter-chip" data-cat="comercio">Comercio</span>
+        <a data-goto="listado">
+            Ver todas →
+        </a>
+
     </div>
+
 
     <!-- Se llena dinámicamente desde data/news.json -->
-    <div class="listado-grid" id="listado-grid"></div>
-  </div>
+
+    <div
+        class="cards-grid"
+        id="home-cards-grid"
+    ></div>
+
+
+    <div class="cta-band">
+
+        <div class="cta-inner">
+
+            <div>
+
+                <h2>
+                    ¿Tienes una historia que contar?
+                </h2>
+
+                <p>
+                    Cuéntanos tu experiencia y ayúdanos a construir esta edición.
+                </p>
+
+            </div>
+
+
+            <span
+                class="btn btn-on-dark"
+                data-goto="contacto"
+            >
+                Escríbenos
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div>
+
+                <div
+                    class="logo"
+                    style="font-size:22px;"
+                >
+                    Vistazo
+                </div>
+
+                <p style="margin-top:8px;">
+                    Un espacio para explorar y compartir noticias y experiencias reales.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>Navegación</h4>
+
+                <ul>
+                    <li>Inicio</li>
+                    <li>Explorar</li>
+                    <li>Favoritos</li>
+                    <li>Nosotros</li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Categorías</h4>
+
+                <ul>
+                    <li>Educación</li>
+                    <li>Tecnología</li>
+                    <li>Turismo</li>
+                    <li>Comercio</li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Contacto</h4>
+
+                <ul>
+                    <li>contacto@vistazo.app</li>
+                    <li>Neiva, Colombia</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Vistazo
+            </span>
+
+            <span>
+                Proyecto académico — materia de Front End
+            </span>
+
+        </div>
+
+    </footer>
+
 </section>
+
+
+
+<!-- ================= LISTADO ================= -->
+
+<section id="listado" class="screen">
+
+    <header class="masthead">
+
+        <div class="masthead-top">
+
+            <div
+                class="logo"
+                data-goto="home"
+            >
+                V<em>i</em>stazo
+            </div>
+
+            <div class="masthead-date">
+                Edición digital<br>
+                Educación · Tecnología · Turismo · Comercio
+            </div>
+
+        </div>
+
+
+        <nav class="mainnav">
+
+            <a data-goto="home">
+                Inicio
+            </a>
+
+            <a
+                class="current"
+                data-goto="listado"
+            >
+                Explorar
+            </a>
+
+            <a data-goto="favoritos">
+                Favoritos
+            </a>
+
+            <a data-goto="contacto">
+                Contacto
+            </a>
+
+            <a data-goto="nosotros">
+                Nosotros
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <div class="page-wrap">
+
+        <h1 class="page-title">
+            Explorar noticias
+        </h1>
+
+        <p
+            class="page-sub"
+            id="listado-contador"
+        >
+            Cargando noticias...
+        </p>
+
+
+        <div
+            class="filters"
+            id="listado-filtros"
+        >
+
+            <span
+                class="filter-chip active"
+                data-cat="todas"
+            >
+                Todas
+            </span>
+
+            <span
+                class="filter-chip"
+                data-cat="educacion"
+            >
+                Educación
+            </span>
+
+            <span
+                class="filter-chip"
+                data-cat="tecnologia"
+            >
+                Tecnología
+            </span>
+
+            <span
+                class="filter-chip"
+                data-cat="turismo"
+            >
+                Turismo
+            </span>
+
+            <span
+                class="filter-chip"
+                data-cat="comercio"
+            >
+                Comercio
+            </span>
+
+        </div>
+
+
+        <!-- Se llena dinámicamente desde data/news.json -->
+
+        <div
+            class="listado-grid"
+            id="listado-grid"
+        ></div>
+
+    </div>
+
+</section>
+
+
 
 <!-- ================= DETALLE ================= -->
-<section id="detalle" class="screen">
-  <header class="masthead">
-    <div class="masthead-top">
-      <div class="logo" data-goto="home">V<em>i</em>stazo</div>
-      <div class="masthead-date">Edición digital<br>Educación · Tecnología · Turismo · Comercio</div>
-    </div>
-    <nav class="mainnav">
-      <a data-goto="home">Inicio</a>
-      <a data-goto="listado">Explorar</a>
-      <a data-goto="favoritos">Favoritos</a>
-      <a data-goto="contacto">Contacto</a>
-      <a>Nosotros</a>
-    </nav>
-  </header>
 
-  <div class="page-wrap">
-    <!-- Se llena dinámicamente según la noticia seleccionada -->
-    <div class="detalle-grid" id="detalle-contenido"></div>
-  </div>
+<section id="detalle" class="screen">
+
+    <header class="masthead">
+
+        <div class="masthead-top">
+
+            <div
+                class="logo"
+                data-goto="home"
+            >
+                V<em>i</em>stazo
+            </div>
+
+            <div class="masthead-date">
+                Edición digital<br>
+                Educación · Tecnología · Turismo · Comercio
+            </div>
+
+        </div>
+
+
+        <nav class="mainnav">
+
+            <a data-goto="home">
+                Inicio
+            </a>
+
+            <a data-goto="listado">
+                Explorar
+            </a>
+
+            <a data-goto="favoritos">
+                Favoritos
+            </a>
+
+            <a data-goto="contacto">
+                Contacto
+            </a>
+
+            <a data-goto="nosotros">
+                Nosotros
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <div class="page-wrap">
+
+        <!-- Se llena dinámicamente según la noticia seleccionada -->
+
+        <div
+            class="detalle-grid"
+            id="detalle-contenido"
+        ></div>
+
+    </div>
+
 </section>
+
+
 
 <!-- ================= FAVORITOS ================= -->
+
 <section id="favoritos" class="screen">
-  <header class="masthead">
-    <div class="masthead-top">
-      <div class="logo" data-goto="home">V<em>i</em>stazo</div>
-      <div class="masthead-date">Edición digital<br>Educación · Tecnología · Turismo · Comercio</div>
+
+    <header class="masthead">
+
+        <div class="masthead-top">
+
+            <div
+                class="logo"
+                data-goto="home"
+            >
+                V<em>i</em>stazo
+            </div>
+
+            <div class="masthead-date">
+                Edición digital<br>
+                Educación · Tecnología · Turismo · Comercio
+            </div>
+
+        </div>
+
+
+        <nav class="mainnav">
+
+            <a data-goto="home">
+                Inicio
+            </a>
+
+            <a data-goto="listado">
+                Explorar
+            </a>
+
+            <a
+                class="current"
+                data-goto="favoritos"
+            >
+                Favoritos
+            </a>
+
+            <a data-goto="contacto">
+                Contacto
+            </a>
+
+            <a data-goto="nosotros">
+                Nosotros
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <div class="page-wrap">
+
+        <h1 class="page-title">
+            Tus favoritos
+        </h1>
+
+        <p
+            class="page-sub"
+            id="favoritos-contador"
+        >
+            Cargando favoritos...
+        </p>
+
+
+        <!-- Se llena dinámicamente con las noticias marcadas como favoritas -->
+
+        <div
+            class="listado-grid"
+            id="favoritos-grid"
+        ></div>
+
     </div>
-    <nav class="mainnav">
-      <a data-goto="home">Inicio</a>
-      <a data-goto="listado">Explorar</a>
-      <a class="current" data-goto="favoritos">Favoritos</a>
-      <a data-goto="contacto">Contacto</a>
-      <a>Nosotros</a>
-    </nav>
-  </header>
 
-  <div class="page-wrap">
-    <h1 class="page-title">Tus favoritos</h1>
-    <p class="page-sub" id="favoritos-contador">Cargando favoritos...</p>
-
-    <!-- Se llena dinámicamente con las noticias marcadas como favoritas -->
-    <div class="listado-grid" id="favoritos-grid"></div>
-  </div>
 </section>
+
+
+
+<!-- ================= NOSOTROS ================= -->
+
+<section id="nosotros" class="screen">
+
+    <header class="masthead">
+
+        <div class="masthead-top">
+
+            <div
+                class="logo"
+                data-goto="home"
+            >
+                V<em>i</em>stazo
+            </div>
+
+            <div class="masthead-date">
+                Edición digital<br>
+                Educación · Tecnología · Turismo · Comercio
+            </div>
+
+        </div>
+
+
+        <nav class="mainnav">
+
+            <a data-goto="home">
+                Inicio
+            </a>
+
+            <a data-goto="listado">
+                Explorar
+            </a>
+
+            <a data-goto="favoritos">
+                Favoritos
+            </a>
+
+            <a data-goto="contacto">
+                Contacto
+            </a>
+
+            <a
+                class="current"
+                data-goto="nosotros"
+            >
+                Nosotros
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <div class="page-wrap">
+
+
+        <!-- INTRODUCCIÓN -->
+
+        <div class="nosotros-intro">
+
+            <h1>
+                Sobre Vistazo
+            </h1>
+
+            <p>
+                Vistazo es una plataforma digital de noticias creada
+                para explorar y compartir información de interés en
+                diferentes áreas como educación, tecnología, turismo
+                y comercio.
+            </p>
+
+            <p>
+                Nuestro propósito es presentar historias y experiencias
+                de una manera clara, organizada y fácil de consultar.
+            </p>
+
+        </div>
+
+
+
+        <!-- MISIÓN, VISIÓN Y ENFOQUE -->
+
+        <div class="nosotros-grid">
+
+
+            <div class="nosotros-card">
+
+                <div class="nosotros-icon">
+                    ◎
+                </div>
+
+                <h2>
+                    Nuestra misión
+                </h2>
+
+                <p>
+                    Facilitar el acceso a noticias y experiencias
+                    relevantes, ofreciendo una plataforma sencilla
+                    para descubrir, consultar y guardar contenidos
+                    de interés.
+                </p>
+
+            </div>
+
+
+
+            <div class="nosotros-card">
+
+                <div class="nosotros-icon">
+                    ◈
+                </div>
+
+                <h2>
+                    Nuestra visión
+                </h2>
+
+                <p>
+                    Crear un espacio digital donde la información
+                    pueda organizarse por categorías y consultarse
+                    de manera rápida, intuitiva y agradable.
+                </p>
+
+            </div>
+
+
+
+            <div class="nosotros-card">
+
+                <div class="nosotros-icon">
+                    ✦
+                </div>
+
+                <h2>
+                    Nuestro enfoque
+                </h2>
+
+                <p>
+                    Combinar información, diseño y tecnología para
+                    construir una experiencia web funcional y fácil
+                    de utilizar.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CATEGORÍAS -->
+
+        <div class="nosotros-categorias">
+
+            <h2>
+                ¿Qué encontrarás en Vistazo?
+            </h2>
+
+
+            <div class="categorias-grid">
+
+
+                <div class="categoria-item">
+
+                    <strong>
+                        Educación
+                    </strong>
+
+                    <span>
+                        Noticias y experiencias relacionadas
+                        con el aprendizaje.
+                    </span>
+
+                </div>
+
+
+
+                <div class="categoria-item">
+
+                    <strong>
+                        Tecnología
+                    </strong>
+
+                    <span>
+                        Información sobre innovación y
+                        herramientas digitales.
+                    </span>
+
+                </div>
+
+
+
+                <div class="categoria-item">
+
+                    <strong>
+                        Turismo
+                    </strong>
+
+                    <span>
+                        Historias y experiencias para
+                        descubrir nuevos lugares.
+                    </span>
+
+                </div>
+
+
+
+                <div class="categoria-item">
+
+                    <strong>
+                        Comercio
+                    </strong>
+
+                    <span>
+                        Contenido relacionado con negocios
+                        y actividad comercial.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LLAMADO A LA ACCIÓN -->
+
+        <div class="cta-band">
+
+            <div class="cta-inner">
+
+                <div>
+
+                    <h2>
+                        ¿Quieres compartir una historia?
+                    </h2>
+
+                    <p>
+                        Cuéntanos tu experiencia y haz parte de Vistazo.
+                    </p>
+
+                </div>
+
+
+                <span
+                    class="btn btn-on-dark"
+                    data-goto="contacto"
+                >
+                    Contáctanos
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
 
 <!-- ================= CONTACTO ================= -->
+
 <section id="contacto" class="screen">
-  <header class="masthead">
-    <div class="masthead-top">
-      <div class="logo" data-goto="home">V<em>i</em>stazo</div>
-      <div class="masthead-date">Edición digital<br>Educación · Tecnología · Turismo · Comercio</div>
+
+    <header class="masthead">
+
+        <div class="masthead-top">
+
+            <div
+                class="logo"
+                data-goto="home"
+            >
+                V<em>i</em>stazo
+            </div>
+
+            <div class="masthead-date">
+                Edición digital<br>
+                Educación · Tecnología · Turismo · Comercio
+            </div>
+
+        </div>
+
+
+        <nav class="mainnav">
+
+            <a data-goto="home">
+                Inicio
+            </a>
+
+            <a data-goto="listado">
+                Explorar
+            </a>
+
+            <a data-goto="favoritos">
+                Favoritos
+            </a>
+
+            <a
+                class="current"
+                data-goto="contacto"
+            >
+                Contacto
+            </a>
+
+            <a data-goto="nosotros">
+                Nosotros
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <div class="page-wrap">
+
+        <div class="contacto-grid">
+
+
+            <!-- INFORMACIÓN DE CONTACTO -->
+
+            <div>
+
+                <h1>
+                    Hablemos
+                </h1>
+
+                <p>
+                    ¿Tienes una historia, sugerencia o pregunta?
+                    Escríbenos y te responderemos lo antes posible.
+                </p>
+
+
+                <div class="info-item">
+
+                    <span class="dot"></span>
+
+                    <span>
+                        contacto@vistazo.app
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="dot"></span>
+
+                    <span>
+                        Neiva, Huila — Colombia
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="dot"></span>
+
+                    <span>
+                        Lunes a viernes, 8:00 a.m. – 5:00 p.m.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FORMULARIO -->
+
+            <div class="form-box">
+
+
+                <!-- MENSAJE DE CONFIRMACIÓN -->
+
+                <div
+                    class="confirm-box"
+                    id="confirmacion"
+                    style="display: none;"
+                >
+
+                    <span>
+                        Tu mensaje fue enviado correctamente.
+                        Gracias por contactarnos.
+                    </span>
+
+                </div>
+
+
+
+                <!-- FORMULARIO -->
+
+                <form
+                    id="form-contacto"
+                    novalidate
+                >
+
+
+                    <!-- NOMBRE -->
+
+                    <div class="field">
+
+                        <label for="nombre">
+                            Nombre completo *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Escribe tu nombre"
+                            autocomplete="name"
+                        >
+
+                        <div
+                            class="error-msg"
+                            id="error-nombre"
+                        ></div>
+
+                    </div>
+
+
+
+                    <!-- CORREO -->
+
+                    <div class="field">
+
+                        <label for="correo">
+                            Correo electrónico *
+                        </label>
+
+                        <input
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            placeholder="ejemplo@correo.com"
+                            autocomplete="email"
+                        >
+
+                        <div
+                            class="error-msg"
+                            id="error-correo"
+                        ></div>
+
+                    </div>
+
+
+
+                    <!-- ASUNTO -->
+
+                    <div class="field">
+
+                        <label for="asunto">
+                            Asunto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="asunto"
+                            name="asunto"
+                            placeholder="¿De qué quieres hablarnos?"
+                        >
+
+                        <div
+                            class="error-msg"
+                            id="error-asunto"
+                        ></div>
+
+                    </div>
+
+
+
+                    <!-- MENSAJE -->
+
+                    <div class="field">
+
+                        <label for="mensaje">
+                            Mensaje *
+                        </label>
+
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            rows="4"
+                            placeholder="Escribe tu mensaje aquí..."
+                        ></textarea>
+
+                        <div
+                            class="error-msg"
+                            id="error-mensaje"
+                        ></div>
+
+                        <div class="field-hint">
+                            Campos marcados con * son obligatorios.
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BOTÓN -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        style="width: 100%; text-align: center;"
+                    >
+                        Enviar mensaje
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
     </div>
-    <nav class="mainnav">
-      <a data-goto="home">Inicio</a>
-      <a data-goto="listado">Explorar</a>
-      <a data-goto="favoritos">Favoritos</a>
-      <a class="current" data-goto="contacto">Contacto</a>
-      <a>Nosotros</a>
-    </nav>
-  </header>
 
-  <div class="page-wrap">
-    <div class="contacto-grid">
-      <div>
-        <h1>Hablemos</h1>
-        <p>¿Tienes una historia, sugerencia o pregunta? Escríbenos y te responderemos lo antes posible.</p>
-        <div class="info-item"><span class="dot"></span><span>contacto@vistazo.app</span></div>
-        <div class="info-item"><span class="dot"></span><span>Neiva, Huila — Colombia</span></div>
-        <div class="info-item"><span class="dot"></span><span>Lunes a viernes, 8:00 a.m. – 5:00 p.m.</span></div>
-      </div>
-
-      <div class="form-box">
-        <div class="confirm-box">
-          ✓ <span>Así se ve el mensaje de confirmación después de enviar el formulario correctamente.</span>
-        </div>
-
-        <div class="field">
-          <label>Nombre completo *</label>
-          <input type="text" placeholder="Escribe tu nombre">
-        </div>
-        <div class="field error">
-          <label>Correo electrónico *</label>
-          <input type="text" value="correo-no-valido">
-          <div class="error-msg">Ingresa un correo electrónico válido.</div>
-        </div>
-        <div class="field">
-          <label>Asunto</label>
-          <input type="text" placeholder="¿De qué quieres hablarnos?">
-        </div>
-        <div class="field">
-          <label>Mensaje *</label>
-          <textarea rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
-          <div class="field-hint">Campos marcados con * son obligatorios.</div>
-        </div>
-        <span class="btn btn-primary" style="width:100%;text-align:center;">Enviar mensaje</span>
-      </div>
-    </div>
-  </div>
 </section>
 
+
+
 <script src="script.js"></script>
+
 </body>
+
 </html>
